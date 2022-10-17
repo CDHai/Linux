@@ -62,3 +62,4 @@ Trên Linux, shell mặc định được cài sẵn là Bash Shell, nhưng khô
 
 > echo -e "\nRemoving \t backslash \t characters\n"
 * Thực thi: bash example.sh
+> ![image](https://user-images.githubusercontent.com/88284121/196148828-f42bc7b8-ec00-40e1-bcec-2049f1c14e2f.png)
