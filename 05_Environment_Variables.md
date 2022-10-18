@@ -23,6 +23,45 @@ Nếu bạn muốn xem giá trị của một biến nhất định, bạn cần
 * Có: HOME = home/cdhai
 
 Có **2 cách** để hiển thị biến HOME:
-* printevn HOME
+* printenv HOME
 * echo $HOME 
 
+![image](https://user-images.githubusercontent.com/88284121/196361913-1c2507fc-bd6c-4c0a-a55d-4d0ecc0d6a65.png)
+## 3, Tạo biến môi trường
+Cú pháp cơ bản để tạo 1 biến:
+```
+export VAR="value"
+```
+
+Nó có nghĩa:
+* **export** : lệnh được dùng để tạo biến
+* **VAR** : tên biến
+* **value** : giá trị của biến
+## 4, Gỡ giá trị ra khỏi biến môi trường Linux
+Cú pháp cơ bản để gỡ 1 biến:
+``` 
+unset VAR 
+```
+Nó có nghĩa:
+* **unset** : lệnh
+* **VAR** : biến bạn muốn gỡ
+
+```
+Đặt và gỡ đặt (Setting / unsetting)  Linux environmental variable sẽ ảnh hưởng đến các tiến trình đang chạy. Nếu bạn muốn đặt cấu hình cố định cho biến môi trường, bạn cần định nghĩa trong file cấu hình cá nhân – i.e. .bash_profile.
+```
+## 4, Biến môi trường Local và Global trong Linux
+* Trong lập trình máy tính, **global variable** là biến được dùng khắp mọi nơi trong ứng dụng. Biến global có thể lấy trong shell session và bất kỳ child process nào.
+* **Local environment** thì là biến được định nghĩa 1 lần trong hàm đó. Local variable chỉ có trong shell mà nó được tạo.
+```
+System environment variables dùng tất cả các ký tự được in hoa để phân biệt với biến người dùng thông thường.
+```
+**Ví dụ**:
+* **local_var** chỉ hiện trong shell hiện hành:
+
+![image](https://user-images.githubusercontent.com/88284121/196369668-399736ad-c306-4018-ad34-9a8ff230403b.png)
+
+* Chúng ta có thể tạo biến **global** bằng lệnh **export**:
+
+![image](https://user-images.githubusercontent.com/88284121/196369875-b745f91f-4aae-4f2c-ba18-1e32481b5ab7.png)
+
+![image](https://user-images.githubusercontent.com/88284121/196370002-74f7e1b6-c4b9-471d-9c50-10716f04254f.png)
