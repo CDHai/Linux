@@ -77,4 +77,5 @@
  * với high-lv tool :
  ```` apt-cache show package_name ```` or
  ```` yum info package_name ````
-
+### More Info 
+* https://viblo.asia/p/linux-cai-phan-mem-tu-source-tren-linux-YWOZr34wlQ0
