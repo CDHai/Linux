@@ -31,5 +31,63 @@
   - Dữ liệu B được chia thành B1 B2 B3 và Parity của nó là Bp, theo thứ tự B1 B2 B3 được lưu trữ tại ổ 0 1 3, và Bp được lưu trữ tại ổ 2.
 ### 2.4, Tham khảo thêm
 * https://hostingviet.vn/cong-nghe-raid-raid-0-raid-1-raid-5-raid-10
-## 3, Sử dụng lệnh `mdadm` để quản lí RAID trong Linux
+## 3, Quản lí RAID trong Linux sử dụng `mdadm`
+- `mdadm` là công cụ để tạo và quản trị RAID trên linux 
+- Đầu tiên, hãy chuẩn bị 2 ổ đĩa cứng để thực hành tạo Raid0, ở đây mình mới add 2 ổ ảo có dung lượng 1GB mỗi ổ để demo
+
+ <img src="https://github.com/tulha161/linux/blob/main/images/11.5.png">
+
+- `mdadm --examine [dev] ` - để kiểm tra đã có raid được tạo trên ổ hay chưa
+
+ <img src="https://github.com/tulha161/linux/blob/main/images/11.6.png">
+
+- dùng tool `fdisk` để tạo lần lượt phân vùng cho 2 ổ trên, step by step như sau : 
+	-`fdisk /dev/sda`
+	- Nhấn `n` để tạo phân vùng mới.
+	- Sau đó chọn `p` cho phân vùng chính.
+	- Tiếp theo chọn số phân vùng là `1` .
+	- Nhập giá trị ban đầu, giá trị kết thúc và nhấn phím Enter.
+	- Tiếp theo nhấn `p` để in phân vùng đã được tạo
+
+	- Nhấn `L` để liệt kê tất cả các loại có sẵn.
+	- Nhập `t` để chọn phân vùng.
+	- Nhập `fd` để chọn Linux RAID tự động và nhấn Enter để áp dụng.
+	- Sử dụng phím `p` để in những thay đổi.
+	- Cuối cùng chúng ta nhấn phím `w` lưu các thay đổi.
+- làm tương tự với `/dev/sdb`, ta thu được kết quả : 
+
+<img src="https://github.com/tulha161/linux/blob/main/images/11.7.png">
+<img src="https://github.com/tulha161/linux/blob/main/images/11.8.png">
+
+- sử dụng `mdadm -C ` để tạo raid
+
+ <img src="https://github.com/tulha161/linux/blob/main/images/11.9.png">
+ 
+ ````
+-C : mode Create
+-l : loại raid 
+-n : chỉ định số lượng và device tham gia raid
+`````	
+- Kiểm tra raid vừa tạo `mdadm --detail /dev/md0`
+
+- Tiếp theo, ta cần phải tạo Filesystem cho raid, ở đây ta tạo định dạng ext4 : `mkfs -t ext4 /dev/md0`
+- Ta tạo thư mục raid0 và mount nó vào 
+	- `mkdir /raid0`
+	- `mount /dev/md0 /raid0`
+- Kiểm tra kết quả bằng `df -h`
+
+ <img src="https://github.com/tulha161/linux/blob/main/images/11.10.png">
+
+- Cuối cùng, để `/dev/md0` vừa tạo được mount vĩnh viễn lên hệ thống, ta cần chỉnh sửa file cấu hình `/etc/fstab` , thêm vào dòng sau :
+
+ <img src="https://github.com/tulha161/linux/blob/main/images/11.11.png">
+
+- Kiểm tra bằng lệnh `mount -av`
+
+ <img src="https://github.com/tulha161/linux/blob/main/images/11.12.png">
+
+- Lưu lại cấu hình raid đã tạo để có thể backup trong tương lai một cách dễ dàng, cú pháp : 
+	- `mdadm -E -s -v >> [folder lưu]`
+
+- Trên đây là toàn bộ các bước cấu hình Raid0 bằng công cụ `mdadm`, đối với các Raid khác các step cũng tương tự.
 
