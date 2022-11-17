@@ -1,6 +1,6 @@
 # DHCP
 ## 1, DHCP là gì?
-* **DHCP** - *Dynamic Host Configuration Protocol*: là giao thực cấu hình host động. Nó cung cấp cho máy tính địa chỉ ip; subnet mask; default gateway. Và nó thường được cấp phát bởi DHPC server được tích hợp sẵn trên router.
+* **DHCP** - *Dynamic Host Configuration Protocol*: là giao thực cấu hình host động. Nó cung cấp cho máy tính địa chỉ ip; subnet mask; default gateway. Nó thường được cấp phát bởi DHPC server được tích hợp sẵn trên router.
 * DHCP giao tiếp bằng UDP và sử dụng port 67 và 68. DHCP server sử dụng port 67 để nghe thông tin từ các client và sử dụng port 68 để reply thông tin.
 ### 1.1, Mô hình và Thành phần
 * DHCP làm việc theo mô hình client server và thành phần chính của DHCP là:
