@@ -5,7 +5,7 @@
 * Trong các phiên bản Distro Linux,mỗi phiên bản sẽ hướng đến một nhóm đối tượng và phục vụ nhu cầu sử dụng khác nhau.
 ### 2.1, Giống nhau:
 * Đều dựa trên 3 nhánh chính: Debian, Red Hat, Slackware.
-* Đều có Kernel và Linux
+* Đều có Kernel và Linux.
 ### 2.2, Khác nhau:
 #### Xét về thị trường: (4)
 * Nhóm 1: **Arch**,**Gentoo** và **Slackware** : nhắm đến người dùng am hiểu Linux. Do đó phần lớn các phương thức xây dựng, cũng như cấu hình của hệ thống được thực hiện qua dòng lệnh.
