@@ -1,6 +1,6 @@
 # RAID
 ## 1, RAID là gì?
-* **RAID** - *Redundant Arrays of Inexpensive* hoặc *Redundant Arrays of Independent Disk* - là hình thức ghép nhiều ổ đĩa cứng vật lí thành một ổ đĩa cứng có chức năng gia tăng tốc độ đọc/ghi dữ liệu hoặc làm tăng thêm sự an toàn dữ liệu chứa trên hệ thông đĩa hoặc kết hợp cả 2 yếu tố trên.
+* **RAID** - *Redundant Arrays of Independent Disk* - là hình thức ghép nhiều ổ đĩa cứng vật lí thành một ổ đĩa cứng có chức năng gia tăng tốc độ đọc/ghi dữ liệu hoặc làm tăng thêm sự an toàn dữ liệu chứa trên hệ thông đĩa hoặc kết hợp cả 2 yếu tố trên.
 * **RAID** được chia thành 7 cấp độ, mỗi cấp độ có các tính năng riêng, hầu hết chúng được xây dựng từ 2 cấp độ cơ bản là RAID 0 hoặc RAID 1.
 ## 2, Các loại RAID phổ biến
 ### 2.1, RAID 0
