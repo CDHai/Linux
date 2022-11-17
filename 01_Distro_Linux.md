@@ -2,7 +2,7 @@
 * Linux là hệ điều hành miễn phí, được tạo ra dựa trên HĐH Unix và phát triển thành giải pháp mã nguồn mở nhằm giảm sự lệ thuộc vào những hệ điều hành đóng (Window).
 * Hệ điều hành mở cho phép người dùng sử dụng miễn phí, tự do phát triển và định hướng hay tùy chỉnh theo nhu cầu thực tế của mình từ đó xuất hiện các Distro Linux (Distribution Linux).
 ## 2, Các phiên bản Distro Linux
-* Trong các phiên bản Distro Linux,mỗi phiên bản sẽ hướng đến một nhóm đối tượng và phục vụ nhu cầu sử dụng khác nhau.
+* Trong các phiên bản Distro Linux, mỗi phiên bản sẽ hướng đến một nhóm đối tượng và phục vụ nhu cầu sử dụng khác nhau.
 ### 2.1, Giống nhau:
 * Đều dựa trên 3 nhánh chính: Debian, Red Hat, Slackware.
 * Đều có Kernel và Linux.
