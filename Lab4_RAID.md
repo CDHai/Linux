@@ -48,3 +48,11 @@
 ## 5.1, RAID0
 * Đây là lượng dữ liệu đã được sử dụng sau khi thêm file `raid.txt`
 ![image](https://user-images.githubusercontent.com/88284121/204711586-930f74b7-a5c6-4c2d-b790-b704e44bec2b.png)
+* Sau khi nhổ 1 disk ra
+![image](https://user-images.githubusercontent.com/88284121/204716601-2e92ef7f-1ee3-473e-8db3-46b73cc142f0.png)
+* Kết quả sau khi kiểm tra lại RAID vừa tạo:
+![image](https://user-images.githubusercontent.com/88284121/204716971-8a09bb9c-ae9a-4b95-8a01-be2ab4066161.png)
+* Sau khi vào lại file `/raid0/` để kiểm tra file `raid.txt` vừa tạo thì không còn thấy nữa:
+![image](https://user-images.githubusercontent.com/88284121/204717128-36d4a4d8-1eeb-4577-a90f-399aae18f246.png)
+* Vì vậy, RAID0 tính bảo mật không cao.
+## 5.2, RAID1
