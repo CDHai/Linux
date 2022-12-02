@@ -47,12 +47,18 @@
 ![image](https://user-images.githubusercontent.com/88284121/204711317-f5160279-ab4b-4499-bd49-f5ecc9f11e4c.png)
 ## 5.1, RAID0
 * Đây là lượng dữ liệu đã được sử dụng sau khi thêm file `raid.txt`
-![image](https://user-images.githubusercontent.com/88284121/204711586-930f74b7-a5c6-4c2d-b790-b704e44bec2b.png)
+![image](https://user-images.githubusercontent.com/88284121/205215281-d694c5a5-674a-4617-a0a7-18ab1dd8eb02.png)
 * Sau khi nhổ 1 disk ra
 ![image](https://user-images.githubusercontent.com/88284121/204716601-2e92ef7f-1ee3-473e-8db3-46b73cc142f0.png)
 * Kết quả sau khi kiểm tra lại RAID vừa tạo:
-![image](https://user-images.githubusercontent.com/88284121/204716971-8a09bb9c-ae9a-4b95-8a01-be2ab4066161.png)
+![image](https://user-images.githubusercontent.com/88284121/205216426-88b0f858-6a62-40ea-9492-a50895687956.png)
 * Sau khi vào lại file `/raid0/` để kiểm tra file `raid.txt` vừa tạo thì không còn thấy nữa:
 ![image](https://user-images.githubusercontent.com/88284121/204717128-36d4a4d8-1eeb-4577-a90f-399aae18f246.png)
 * Vì vậy, RAID0 tính bảo mật không cao.
 ## 5.2, RAID1
+* Thông tin của RAID ban đầu:
+![image](https://user-images.githubusercontent.com/88284121/205221274-51372eaa-3060-4af4-bf22-9140706284a9.png)
+* Đây là lượng dữ liệu đã được sử dụng sau khi thêm file `raid.txt`
+![image](https://user-images.githubusercontent.com/88284121/205204794-4290f8e6-bfbf-457a-a8ab-0d5e45269373.png)
+* Có thể thấy dung lượng sử dụng của RAID1 (/dev/md127) chỉ là 9.8GB (tương đương với 1 disk tham gia) so với 20GB của RAID0 là cả 2 disk cùng tham gia.
+* Sau khi nhổ 1 disk ra
