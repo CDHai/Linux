@@ -91,3 +91,5 @@
 
 - Trên đây là toàn bộ các bước cấu hình Raid0 bằng công cụ `mdadm`, đối với các Raid khác các step cũng tương tự.
 
+# Tài liệu tham khảo thêm:
+* https://blogd.net/linux/software-raid-toan-tap-tren-linux/
