@@ -62,3 +62,8 @@
 ![image](https://user-images.githubusercontent.com/88284121/205204794-4290f8e6-bfbf-457a-a8ab-0d5e45269373.png)
 * Có thể thấy dung lượng sử dụng của RAID1 (/dev/md127) chỉ là 9.8GB (tương đương với 1 disk tham gia) so với 20GB của RAID0 là cả 2 disk cùng tham gia.
 * Sau khi nhổ 1 disk ra
+![image](https://user-images.githubusercontent.com/88284121/205542964-b5656924-7ab4-4417-aae0-cb70f5667876.png)
+* Kết quả sau khi kiểm tra lại RAID vừa tạo:
+![image](https://user-images.githubusercontent.com/88284121/205543034-74236a33-40c5-4895-b681-ccdc9957e2e6.png)
+* Sau khi vào lại file `/raid0/` để kiểm tra file `raid.txt` vừa tạo thì **vẫn còn nguyên**:
+![image](https://user-images.githubusercontent.com/88284121/205543100-8464a7ed-c2b4-44e1-b0fa-10cf4ed688d5.png)
