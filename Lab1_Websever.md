@@ -71,4 +71,3 @@ Nó có ưu điểm là cho phép xử lý tốc độ tải cao hơn đối v�
 
 ![image](https://user-images.githubusercontent.com/88284121/197446242-495a48aa-56bd-43e1-9d74-b9880a7ef6dd.png)
 
-
