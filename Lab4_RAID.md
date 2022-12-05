@@ -42,6 +42,20 @@
 #### 3.2.2, Tạo `RAID1`
 * Làm tương tự đối với `RAID0`
 # 4, Sử dụng `Sysbench` để so sánh tốc độ Disk
+## 4.1, Cài đặt Sysbench
+* Cài đặt Sysbench: `sudo apt install sysbench`
+## 4.2, Đo tốc độ của RAID0
+* Sử dụng câu lệnh: `sysbench --test=memory run`
+![image](https://user-images.githubusercontent.com/88284121/205600959-1bae9ac2-5f12-4def-8f6f-e87817cc4ec3.png)
+## 4.3, Đo tốc độ của RAID1
+* Sử dụng câu lệnh: `sysbench --test=memory run`
+![image](https://user-images.githubusercontent.com/88284121/205605090-066f3c5e-17c2-410d-9877-2014eefc19f7.png)
+## 4.4, Đánh giá tốc độ của RAID0 và RAID0
+* Hiệu suất bộ nhớ có thể được kiểm tra bằng cách kiểm tra hai tham số: **Total Operations** và **Transferred**.
+* Đúng như lí thuyết: 
+  - **RAID0** (Stripping): dữ liệu sẽ được ghi vào đĩa bằng phương pháp chia sẻ, một nửa nội dung sẽ nằm trong một đĩa và một nửa khác sẽ được ghi vào đĩa khác.
+  - **RAID1** (Mirroring): là sự sao chép dữ liệu vào hai hoặc nhiều đĩa. 
+* **Tốc độ ghi**: `RAID0  >  RAID1`.
 # 5, Giả lập trường hợp chết 1 Disk
 * Tạo 1 file `raid.txt` dùng để test dữ liệu sau khi nhổ Disk ra.
 ![image](https://user-images.githubusercontent.com/88284121/204711317-f5160279-ab4b-4499-bd49-f5ecc9f11e4c.png)
