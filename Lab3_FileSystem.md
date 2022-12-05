@@ -40,4 +40,3 @@
 * Sau khi lưu cấu hình file `fstab` và Reboot:
 ![image](https://user-images.githubusercontent.com/88284121/204248308-076f6035-f9f0-4c66-8c8a-78d0f0b7bc57.png)
 
-
