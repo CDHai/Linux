@@ -67,3 +67,4 @@
 ![image](https://user-images.githubusercontent.com/88284121/205543034-74236a33-40c5-4895-b681-ccdc9957e2e6.png)
 * Sau khi vào lại file `/raid0/` để kiểm tra file `raid.txt` vừa tạo thì **vẫn còn nguyên**:
 ![image](https://user-images.githubusercontent.com/88284121/205543100-8464a7ed-c2b4-44e1-b0fa-10cf4ed688d5.png)
+
