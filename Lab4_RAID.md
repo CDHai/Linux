@@ -41,25 +41,25 @@
 ![image](https://user-images.githubusercontent.com/88284121/204701563-ea5365a0-936b-48c7-b252-b9f6f8c2aa6b.png)
 #### 3.2.2, Tạo `RAID1`
 * Làm tương tự đối với `RAID0`
-# 4, Sử dụng `Sysbench` để so sánh tốc độ Disk
-## 4.1, Cài đặt Sysbench
+## 4, Sử dụng `Sysbench` để so sánh tốc độ Disk
+### 4.1, Cài đặt Sysbench
 * Cài đặt Sysbench: `sudo apt install sysbench`
-## 4.2, Đo tốc độ của RAID0
+### 4.2, Đo tốc độ của RAID0
 * Sử dụng câu lệnh: `sysbench --test=memory run`
 ![image](https://user-images.githubusercontent.com/88284121/205600959-1bae9ac2-5f12-4def-8f6f-e87817cc4ec3.png)
-## 4.3, Đo tốc độ của RAID1
+### 4.3, Đo tốc độ của RAID1
 * Sử dụng câu lệnh: `sysbench --test=memory run`
 ![image](https://user-images.githubusercontent.com/88284121/205605090-066f3c5e-17c2-410d-9877-2014eefc19f7.png)
-## 4.4, Đánh giá tốc độ của RAID0 và RAID0
+### 4.4, Đánh giá tốc độ của RAID0 và RAID0
 * Hiệu suất bộ nhớ có thể được kiểm tra bằng cách kiểm tra hai tham số: **Total Operations** và **Transferred**.
 * Đúng như lí thuyết: 
   - **RAID0** (Stripping): dữ liệu sẽ được ghi vào đĩa bằng phương pháp chia sẻ, một nửa nội dung sẽ nằm trong một đĩa và một nửa khác sẽ được ghi vào đĩa khác.
   - **RAID1** (Mirroring): là sự sao chép dữ liệu vào hai hoặc nhiều đĩa. 
 * **Tốc độ ghi**: `RAID0  >  RAID1`.
-# 5, Giả lập trường hợp chết 1 Disk
+## 5, Giả lập trường hợp chết 1 Disk
 * Tạo 1 file `raid.txt` dùng để test dữ liệu sau khi nhổ Disk ra.
 ![image](https://user-images.githubusercontent.com/88284121/204711317-f5160279-ab4b-4499-bd49-f5ecc9f11e4c.png)
-## 5.1, RAID0
+### 5.1, RAID0
 * Đây là lượng dữ liệu đã được sử dụng sau khi thêm file `raid.txt`
 ![image](https://user-images.githubusercontent.com/88284121/205215281-d694c5a5-674a-4617-a0a7-18ab1dd8eb02.png)
 * Sau khi nhổ 1 disk ra
@@ -69,7 +69,7 @@
 * Sau khi vào lại file `/raid0/` để kiểm tra file `raid.txt` vừa tạo thì không còn thấy nữa:
 ![image](https://user-images.githubusercontent.com/88284121/204717128-36d4a4d8-1eeb-4577-a90f-399aae18f246.png)
 * Vì vậy, RAID0 tính bảo mật không cao.
-## 5.2, RAID1
+### 5.2, RAID1
 * Thông tin của RAID ban đầu:
 ![image](https://user-images.githubusercontent.com/88284121/205221274-51372eaa-3060-4af4-bf22-9140706284a9.png)
 * Đây là lượng dữ liệu đã được sử dụng sau khi thêm file `raid.txt`
