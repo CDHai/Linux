@@ -55,3 +55,54 @@
 * Ngoài cơ chế xác thức bằng cách nhập mật khẩu như trên còn có cơ chế sử dụng SSH Key để xác thực. Để tạo nên xác thực này cần có hai file, 1 file lưu **Private Key** và 1 lưu **Public key**:
   - **Public Key** khóa chung, là một file **text** - nó lại lưu ở phía **Server SSH**, nó dùng để khi **Client** gửi **Private Key** (file lưu ở Client) lên để xác thực thì **kiểm tra phù hợp** giữa **Private Key** và **Public Key** này. Nếu phù hợp thì cho kết nối.
   - **Private Key** khóa riêng, là một file **text** bên trong nó chứa **mã riêng** để xác thực (xác thực là kiểm tra sự phù hợp của Private Key và Public Key). Client kết nối với Server phải **chỉ ra** file này khi kết nối SSH **thay vì** nhập mật khẩu. **Hãy lưu file Private key cận thận**, bất kỳ ai có file này có thể thực hiện kết nối đến máy chủ của bạn.
+```
+Sau khi vọc mất 2 buổi đi làm full-time thì mình đúc rút ra được tưng đây bước để đăng nhập cơ bản bằng SSH KEY cho anh em nào nếu có vào đọc :))) 
+Mình sẽ làm theo bước, mỗi bước sẽ thực hiện ở cả 2 máy: Client và Server.
+```
+#### B1. Tạo cặp khóa (Private và Public)
+* Có thể sử dụng câu lệnh để lấy Key ở máy Client hay Server đều được, ở đây mình sẽ dùng vào Server cho tiện.
+* Sử dụng câu lệnh `ssh-keygen -t rsa`
+![image](https://user-images.githubusercontent.com/88284121/206404720-c7246fc2-7a6c-4393-aca2-1797fedcdd59.png)
+* Sau khi viết lệnh sẽ có vài dòng câu hỏi như ở trên, tùy vào mục đích của anh em có thể điền hoặc là không.
+* **passphrase** là mật khẩu được sử dụng để mở Private Key.
+#### B2. Xử lí Private Key từ file `id_rsa.pub` sang `authorized_keys`
+![image](https://user-images.githubusercontent.com/88284121/206405437-7869909e-f860-4010-9ad8-45ba7183fd34.png)
+* Sau khi sử dụng câu lệnh tạo Key ở trên thì 3 thư mục sẽ được tạo ra ở trong mục `home/user/.ssh`, trong đó:
+  - `id_rsa`: **Private Key** - file này tí nữa sẽ phải gửi sang máy Client
+  - `id_rsa.pub`: **Public Key** - file này sau đấy sẽ copy toàn bộ nội dung sang file `authorized_keys`, và sẽ bị xóa đi sau khi đã copy thành công.
+  - `authorized_keys`: **File rỗng** - file này sẽ được copy nội dung từ `id_rsa.pub` để sử dụng thay mục đích của Public Key do đặc thù trong file config của Server, ở dưới sẽ rõ hơn.
+* Sử dụng lệnh `mv` để thao tác:
+![image](https://user-images.githubusercontent.com/88284121/206406877-4bd290b4-d34d-4e09-9a88-b043ebf9fcbb.png)
+#### B3. Chuyển file `id_rsa` (Private Key) sang máy Client
+* Sử dụng lệnh `scp` trên máy **Client** như sau:
+![image](https://user-images.githubusercontent.com/88284121/206408368-48d1a055-6b36-4b18-a52e-ec3d870efd1c.png)
+* Sau khi sử dụng có câu hỏi thì ấn "yes"
+#### B4. Sửa lại quyền cho các file và các thư mục cần thiết
+* lỗi hay gặp không kết nối được SSH KEY: thường là lưu file public key ở Server ở các thư mục không được chmod phù hợp. Nếu user có tên là abc, thì `chmod` phù hợp là:
+![image](https://user-images.githubusercontent.com/88284121/206409035-0e3c59f9-52d6-45ed-9cde-e4ff8084bdeb.png)
+* Cũng lưu ý là Private key được `chmod` phù hợp (600)
+##### Server:
+![image](https://user-images.githubusercontent.com/88284121/206409374-ef3fa68d-d85e-4fa5-a122-9178a1ee5dd4.png)
+##### Client:
+![image](https://user-images.githubusercontent.com/88284121/206409650-e15a6b9f-8934-4f49-a0ad-98d3c62f07a5.png)
+#### B5: Sửa lại file `config` ở cả Server và Client
+* Ở đây mình dùng `nano` để sửa
+##### Server:
+* `nano /etc/ssh/sshd_config`
+![image](https://user-images.githubusercontent.com/88284121/206410373-0054d1a3-d47d-4b7c-856c-2140dc75bd08.png)
+* Cần đảm báo phải có 2 dòng này.
+![image](https://user-images.githubusercontent.com/88284121/206410726-111806ad-5b26-4943-98fb-5eda452d1cec.png)
+* Sửa lại phần này giá trị = `no` để không cần xác thực Password.
+* **NOTE**: Đừng quên reset dịch vụ sshd :)))
+![image](https://user-images.githubusercontent.com/88284121/206411579-8950a7c5-3110-4250-bc6d-fd3c3bffc18d.png)
+##### Client:
+* Tạo file config ở trong thực mục `.ssh` và viết như sau:
+![image](https://user-images.githubusercontent.com/88284121/206411135-5e71c018-f835-4225-9f4d-d8a585412115.png)
+* Trong đó:
+  - PreferredAuthentications publickey là bật xác thực bằng Key
+  - IdentityFile là nơi lưu trữ Private Key (`id_rsa`) trên máy **Client**
+#### B6: Enjoy cái moment này
+* SSH đến Server bằng host test mà mình đã tạo ở trong file config
+![image](https://user-images.githubusercontent.com/88284121/206411874-ded10655-f4cc-44d1-aeff-34609625bc78.png)
+
+
