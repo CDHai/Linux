@@ -82,3 +82,4 @@
 * Sau khi vào lại file `/raid0/` để kiểm tra file `raid.txt` vừa tạo thì **vẫn còn nguyên**:
 ![image](https://user-images.githubusercontent.com/88284121/205543100-8464a7ed-c2b4-44e1-b0fa-10cf4ed688d5.png)
 
+
