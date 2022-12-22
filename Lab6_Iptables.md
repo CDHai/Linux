@@ -4,7 +4,7 @@
 ![image](https://user-images.githubusercontent.com/88284121/209078380-b579e10b-d8e8-4f44-b7a3-00febaf18a33.png)
 * Client, Server cài hệ điều hành Ubuntu Server.
 * Cấu hình iptables tại Server.
-### 1.2, Mục đích
+### 1.2, Mục đích:
 1. Mặc định, DROP INPUT.
 2. Mặc định, ACCEPT OUTPUT.
 3. Mặc định, DROP FORWARD.
@@ -12,7 +12,7 @@
 5. ACCEPT kết nối từ loopback.
 6. ACCEPT kết nối Ping với 5 lần mỗi phút từ mạng LAN.
 7. ACCEPT kết nối SSH từ trong mạng LAN. 
-### 1.3, Thực hành
+### 1.3, Thực hành:
 * Ở đây mình sử dụng LAN `192.168.181.0/24` thay vì `172.16.69.0/24` như ở đề bài
 * 2 Ubuntu Server Client và Server có IP lần lượt là:
   - **Client**: `192.168.181.138`
@@ -47,3 +47,19 @@
 ![image](https://user-images.githubusercontent.com/88284121/209098633-199c7a5e-2e0f-41a7-b941-5fe65b8b2842.png)
 * SSH ngon nghẻ:
 ![image](https://user-images.githubusercontent.com/88284121/209098777-135b14b0-56d3-41b9-889e-a46f3312ea16.png)
+
+## 2, LAB 2
+### 2.1, Mô hình:
+![image](https://user-images.githubusercontent.com/88284121/209100866-194efaa3-b5d8-4ed1-adb1-799ae32bfce5.png)
+* Client, Server cài hệ điều hành Ubuntu Server.
+* Cấu hình iptables tại Server.
+### 2.2, Mục đích:
+1. Mặc định, DROP INPUT.
+2. Mặc định, ACCEPT OUTPUT.
+3. Mặc định, DROP FORWARD.
+4. ACCEPT Established Connection.
+5. ACCEPT kết nối từ loopback.
+6. ACCEPT kết nối Ping với 5 lần mỗi phút từ mạng LAN.
+7. ACCEPT kết nối SSH từ trong mạng LAN.
+8. ACCEPT Outgoing gói tin thông qua Server từ mạng LAN (10.10.10.0/24) và nat địa chỉ nguồn của gói tin.
+### 2.3, Thực hành:
