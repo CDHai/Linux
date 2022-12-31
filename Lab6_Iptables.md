@@ -104,7 +104,7 @@ iptables -t nat -A POSTROUTING -o ens33 -s 10.10.10.0/24 -j MASQUERADE
 ```
 * Ping oke ngay: *hình ảnh minh hoạ ping từ Client đến `172.16.69.11` của Server thành công thôi nhưng ảnh lỡ bị xóa mất hihi*
 
-## 3, LAB 
+## 3, LAB 3  
 ### 3.1, Mô hình:
 ![image](https://user-images.githubusercontent.com/88284121/209758286-16320fda-aa94-498d-8568-bdc50de12c8a.png)
 * Client, Server cài hệ điều hành Ubuntu Server 16.04.
@@ -159,3 +159,63 @@ iptables -t nat -A POSTROUTING -o ens33 -s 10.10.10.0/24 -j MASQUERADE
 iptables -A FORWARD -i ens37 -o ens33 -j ACCEPT
 iptables -t nat -A POSTROUTING -o ens33 -s 10.10.10.0/24 -j MASQUERADE
 ```
+## 4, LAB 4
+### 4.1, Mô hình:
+![image](https://user-images.githubusercontent.com/88284121/210122498-5dd0f44b-9130-45db-9554-0118e2124de4.png)
+* Client, Server cài hệ điều hành Ubuntu Server 16.04.
+* Router, có thể giả lập là VM.
+* Cấu hình iptables tại Server.
+* Trên Backend1, cài SSH lắng nghe trên port 22.
+* Trên Backend2, cài Web server (apache2) lắng nghe trên port 80.
+### 4.2, Mục đích:
+1. Mặc định, DROP INPUT.
+2. Mặc định, ACCEPT OUTPUT.
+3. Mặc định, DROP FORWARD.
+4. ACCEPT Established Connection.
+5. ACCEPT kết nối từ loopback.
+6. FORWARD gói tin đến port 80 trên ens33 đến port tương tự trên Backend1.
+FORWARD gói tin đến port 443 trên ens33 đến port tương tự trên Backend2.
+7. ACCEPT kết nối Ping với 5 lần mỗi phút từ mạng LAN.
+8. ACCEPT kết nối SSH từ trong mạng LAN.
+9. ACCEPT Outgoing Packets thông qua Server từ mạng LAN (10.10.10.0/24) và nat địa chỉ nguồn của packet.
+### 4.3, Thực hành:
+#### `CẤU HÌNH CÁC YÊU CẦU TƯƠNG TỰ NHƯ LAB 3`
+#### `Backend1` lắng nghe Port 22:
+* Cấu hình iptables ở Server:
+```
+iptables -A FORWARD -p tcp -d 10.10.10.51 --dport 22 -j ACCEPT
+iptables -t nat -A PREROUTING -p tcp -d 172.16.69.11 --dport 22 -j DNAT --to-destination 10.10.10.51
+iptables -t nat -A POSTROUTING -p tcp -d 10.10.10.51 --dport 22 -j SNAT --to-source 10.10.10.11
+```
+
+## 5, LAB 5 
+### 5.1, Mô hình:
+![image](https://user-images.githubusercontent.com/88284121/210123959-195718ec-d064-4450-9b08-94717a706336.png)
+* Client1, Client2, WebServer và Firewall cài hệ điều hành Ubuntu Server 16.04.
+* Cấu hình iptables tại Firewall.
+* Trên WebServer, cài Web server (apache2) lắng nghê trên port 80.
+### 5.2, Mục đích:
+1. Mặc định, DROP INPUT.
+2. Mặc định, ACCEPT OUTPUT.
+3. Mặc định, DROP FORWARD.
+4. ACCEPT Established Connection.
+5. FORWARD gói tin đến port 80 trên ens33 sang port ens38 và đến port 80 trên Webserver.
+6. Cho phép 1 máy (Client1) trong dải 10.10.20.0/24 quản trị Webserver.
+7. Cho phép các máy trong dải 10.10.20.0/24 kết nối ra Internet.
+### 5.3, Thực hành:
+#### M1: Mặc định, DROP INPUT
+![image](https://user-images.githubusercontent.com/88284121/209782756-9012abe8-4927-4645-acb7-c21aefec7f8b.png)
+#### M2: Mặc định, ACCEPT OUTPUT
+![image](https://user-images.githubusercontent.com/88284121/209080881-54dd1f56-daed-497d-b50f-6a023e1d9b33.png)
+#### M3: Mặc định, DROP FORWARD
+![image](https://user-images.githubusercontent.com/88284121/209080989-210c3417-f1ef-45ec-b7fd-c32f1fce9858.png)
+#### M4: ACCEPT Establishes Connection
+![image](https://user-images.githubusercontent.com/88284121/209783638-043b7ae0-eaed-46bb-bd76-658467c5453c.png)
+#### M5: FORWARD gói tin đến port 80 trên ens33 sang port ens38 và đến port 80 trên Webserver.
+![image](https://user-images.githubusercontent.com/88284121/210124737-80801107-0627-48c8-b55b-b973cf2fe9c7.png)
+#### M6: Cho phép 1 máy (Client1) trong dải 10.10.20.0/24 quản trị Webserver.
+![image](https://user-images.githubusercontent.com/88284121/210124786-8d8afee7-021f-499b-8229-77b5a769752d.png)
+#### M7. Cho phép các máy trong dải 10.10.20.0/24 kết nối ra Internet.
+![image](https://user-images.githubusercontent.com/88284121/210125225-6941f4ea-7bd0-472b-b936-595e282d7f5e.png)
+* ping ra mạng 172.16.69.0/24
+![image](https://user-images.githubusercontent.com/88284121/210125246-2a967f6a-82b6-4498-883f-d81cf6d8ffa9.png)
